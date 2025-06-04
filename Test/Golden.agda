@@ -91,7 +91,7 @@ open import Data.Nat.Base using (ℕ; _≡ᵇ_; _<ᵇ_; _+_; _∸_)
 import Data.Nat.Show as ℕ using (show)
 open import Data.Product.Base using (_×_; _,_)
 open import Data.String.Base as String using (String; lines; unlines; unwords; concat)
-open import Data.String.Properties as String using (_≟_)
+open import Data.String.Properties using (_≟_)
 open import Data.Sum.Base using (_⊎_; inj₁; inj₂)
 open import Data.Unit.Base using (⊤)
 
@@ -218,7 +218,7 @@ runTest opts testPath = do
                          else putStrLn (fileNotFound "expected")
                        pure (inj₁ testPath)
 
-  let result = does (out String.≟ exp)
+  let result = does (out ≟ exp)
 
   if result
     then printTiming (opts .timing) time
